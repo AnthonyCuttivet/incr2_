@@ -5,7 +5,9 @@
         "noEmit": true,
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
-        "strict": true
+        "strict": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true
     },
     "include": [
         "./src/**/*"

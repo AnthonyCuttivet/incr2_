@@ -1,0 +1,84 @@
+{
+  "buildings": [
+      {
+        "name": "Building A",
+        "icon_path": "assets/Icons/I_Leaf.png",
+        "icon": "icon_leaf",
+        "base_cost": 10,
+        "base_prod": 2,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building B",
+        "icon_path": "assets/Icons/I_Ruby.png",
+        "icon": "icon_ruby",
+        "base_cost": 125,
+        "base_prod": 6,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building C",
+        "icon_path": "assets/Icons/I_Sapphire.png",
+        "icon": "icon_sapphire",
+        "base_cost": 600,
+        "base_prod": 20,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building D",
+        "icon_path": "assets/Icons/I_Scroll.png",
+        "icon": "icon_scroll",
+        "base_cost": 1800,
+        "base_prod": 65,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building E",
+        "icon_path": "assets/Icons/I_C_RedPepper.png",
+        "icon": "icon_pepper",
+        "base_cost": 5600,
+        "base_prod": 200,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building F",
+        "icon_path": "assets/Icons/I_Cannon04.png",
+        "icon": "icon_cannon",
+        "base_cost": 38000,
+        "base_prod": 650,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building G",
+        "icon_path": "assets/Icons/I_Jade.png",
+        "icon": "icon_jade",
+        "base_cost": 442000,
+        "base_prod": 2000,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building H",
+        "icon_path": "assets/Icons/I_ScorpionClaw.png",
+        "icon": "icon_scorpion",
+        "base_cost": 7300000,
+        "base_prod": 8500,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building I",
+        "icon_path": "assets/Icons/I_FrogLeg.png",
+        "icon": "icon_frog",
+        "base_cost": 145000000,
+        "base_prod": 100000,
+        "scaler": 1.15
+      },
+      {
+        "name": "Building J",
+        "icon_path": "assets/Icons/I_Feather02.png",
+        "icon": "icon_phoenix",
+        "base_cost": 3200000000,
+        "base_prod": 1200000,
+        "scaler": 1.15
+      }
+  ]
+}

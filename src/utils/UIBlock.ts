@@ -256,6 +256,7 @@ export class UIBlock {
             child.setMask(mask);
         }.bind(this));
     }
+
     destroy() {
         var childArray = this.getAllChildren();
         this.childIndex = -1;
