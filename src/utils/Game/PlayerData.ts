@@ -3,14 +3,13 @@ import { BuildingData } from "../../prefabs/Building";
 export class PlayerData {
     private _currency: number = 0;
     private _cps: number = 0;
-    private _buildings: BuildingData[] = [];
-    public get buildings(): BuildingData[] {
+    private _buildings: Map<number, BuildingData> = new Map<number, BuildingData>;
+    public get buildings(): Map<number, BuildingData> {
         return this._buildings;
     }
-    public set buildings(value: BuildingData[]) {
+    public set buildings(value: Map<number, BuildingData>) {
         this._buildings = value;
     }
-
     public get cps(): number {
         return this._cps;
     }

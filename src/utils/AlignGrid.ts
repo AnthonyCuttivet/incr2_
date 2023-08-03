@@ -67,7 +67,13 @@ export class AlignGrid {
 		var xx = index - (yy * this.config.cols);
 
 		this.placeAt(xx, yy, obj);
-
+	}
+	getIndexCoords(index: any): Phaser.Math.Vector2 {
+		var yy = Math.floor(index / this.config.cols);
+		var xx = index - (yy * this.config.cols);
+		var x2 = this.cw * xx + this.cw / 2;
+		var y2 = this.ch * yy + this.ch / 2;
+		return new Phaser.Math.Vector2(x2, y2);
 	}
 	showNumbers() {
 		this.show();

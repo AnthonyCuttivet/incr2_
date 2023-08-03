@@ -30,10 +30,10 @@ export class BuildingUtils {
     }
 
     public static AddBuilding(building: BuildingData) {
-        if (PlayerUtils.GetPlayerData().buildings.includes(building)) {
+        if (PlayerUtils.GetPlayerData().buildings.has(building.ID)) {
             return;
         }
 
-        PlayerUtils.GetPlayerData().buildings.push(building);
+        PlayerUtils.GetPlayerData().buildings.set(building.ID, building);
     }
 }

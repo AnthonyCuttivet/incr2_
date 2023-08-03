@@ -10,6 +10,7 @@ export interface BuildingData {
     current_prod: number,
     owned: number,
     scaler: number,
+    ID: number
 }
 
 export interface ButtonSettings {
@@ -18,6 +19,8 @@ export interface ButtonSettings {
     clicked_color: number,
     w: number,
     h: number,
+    origin_x: number,
+    origin_y: number,
 }
 
 export class Building extends UIBlock {
@@ -35,7 +38,7 @@ export class Building extends UIBlock {
     building_owned!: Phaser.GameObjects.Text;
     building_locked!: boolean;
 
-    constructor(game: any, name: string, icon: string, base_cost: number, base_prod: number, scaler: number, button_settings: ButtonSettings, index: number) {
+    constructor(game: any, name: string, icon: string, base_cost: number, base_prod: number, scaler: number, ID: number, button_settings: ButtonSettings, index: number) {
         super();
         this.game = game;
 
@@ -47,7 +50,8 @@ export class Building extends UIBlock {
             base_prod: base_prod,
             current_prod: 0,
             owned: 0,
-            scaler: scaler
+            scaler: scaler,
+            ID: ID
         };
 
         this.building_button = new UIBlock();
@@ -94,7 +98,7 @@ export class Building extends UIBlock {
         this.building_button.add(this.building_owned);
         this.building_button.add(this.building_locked);
 
-        this.building_button.setXY(0, index * 1.05 * this.button_settings.h);
+        this.building_button.setXY(this.button_settings.origin_x + 0, this.button_settings.origin_y + (index * 1.05 * this.button_settings.h));
     }
 
     public UpdateBuilding() {

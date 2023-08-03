@@ -1,6 +1,7 @@
 {
   "buildings": [
       {
+        "ID":0,
         "name": "Building A",
         "icon_path": "assets/Icons/I_Leaf.png",
         "icon": "icon_leaf",
@@ -9,6 +10,7 @@
         "scaler": 1.15
       },
       {
+        "ID":1,
         "name": "Building B",
         "icon_path": "assets/Icons/I_Ruby.png",
         "icon": "icon_ruby",
@@ -17,6 +19,7 @@
         "scaler": 1.15
       },
       {
+        "ID":2,
         "name": "Building C",
         "icon_path": "assets/Icons/I_Sapphire.png",
         "icon": "icon_sapphire",
@@ -25,6 +28,7 @@
         "scaler": 1.15
       },
       {
+        "ID":3,
         "name": "Building D",
         "icon_path": "assets/Icons/I_Scroll.png",
         "icon": "icon_scroll",
@@ -33,6 +37,7 @@
         "scaler": 1.15
       },
       {
+        "ID":4,
         "name": "Building E",
         "icon_path": "assets/Icons/I_C_RedPepper.png",
         "icon": "icon_pepper",
@@ -41,6 +46,7 @@
         "scaler": 1.15
       },
       {
+        "ID":5,
         "name": "Building F",
         "icon_path": "assets/Icons/I_Cannon04.png",
         "icon": "icon_cannon",
@@ -49,6 +55,7 @@
         "scaler": 1.15
       },
       {
+        "ID":6,
         "name": "Building G",
         "icon_path": "assets/Icons/I_Jade.png",
         "icon": "icon_jade",
@@ -57,6 +64,7 @@
         "scaler": 1.15
       },
       {
+        "ID":7,
         "name": "Building H",
         "icon_path": "assets/Icons/I_ScorpionClaw.png",
         "icon": "icon_scorpion",
@@ -65,6 +73,7 @@
         "scaler": 1.15
       },
       {
+        "ID":8,
         "name": "Building I",
         "icon_path": "assets/Icons/I_FrogLeg.png",
         "icon": "icon_frog",
@@ -73,6 +82,7 @@
         "scaler": 1.15
       },
       {
+        "ID":9,
         "name": "Building J",
         "icon_path": "assets/Icons/I_Feather02.png",
         "icon": "icon_phoenix",
