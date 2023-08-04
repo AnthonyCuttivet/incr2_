@@ -25,9 +25,6 @@ export default class InitialScene extends Phaser.Scene {
         const COLOR_LIGHT = 0x7b5e57;
         const COLOR_DARK = 0x260e04;
 
-        console.log(this.rexUI);
-
-
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 400,
             y: 300,
@@ -125,7 +122,7 @@ export default class InitialScene extends Phaser.Scene {
         this.time.addEvent({
             delay: 100,
             callback: () => {
-                PlayerUtils.AddCurrency(Math.ceil(PlayerUtils.GetPlayerData().cps / 10));
+                PlayerUtils.AddCurrency(PlayerUtils.GetPlayerData().cps / 10);
             },
             callbackScope: this,
             loop: true

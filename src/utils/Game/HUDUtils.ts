@@ -141,7 +141,7 @@ export class HUDUtils {
     }
 
     public static UpdatePlayerCurrencyHUD() {
-        this.HUDData.currency_text.setText(PlayerUtils.GetPlayerData().currency.toString());
+        this.HUDData.currency_text.setText(Math.trunc(PlayerUtils.GetPlayerData().currency).toString());
     }
 
     public static UpdatePlayerCPSHUD() {
