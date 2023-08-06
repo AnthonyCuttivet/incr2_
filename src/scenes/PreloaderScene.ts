@@ -11,6 +11,7 @@ export default class Preloader extends Phaser.Scene {
         // Create or Load player Data
         PlayerUtils.CreateOrLoadPlayerData();
         BuildingUtils.LoadBuildingsData(this);
+        this.load.image('icon_clover', "assets/Icons/I_Clover.png");
     }
 
     create(): void {

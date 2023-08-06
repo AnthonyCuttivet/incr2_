@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser, { Scene } from 'phaser';
 import { Align } from '../utils/Align';
 import { AlignGrid } from '../utils/AlignGrid';
 import { UIBlock } from '../utils/UIBlock';
@@ -6,6 +6,7 @@ import { Building } from '../prefabs/Building';
 import { PlayerUtils } from '../utils/Game/PlayerUtils';
 import { HUDUtils } from '../utils/Game/HUDUtils';
 import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
+import { FixWidthSizer, Label, SetChildrenInteractive, Sizer } from 'phaser3-rex-plugins/templates/ui/ui-components';
 
 export default class InitialScene extends Phaser.Scene {
     private background!: Phaser.GameObjects.Rectangle;
@@ -17,6 +18,7 @@ export default class InitialScene extends Phaser.Scene {
     }
 
     create(): void {
+
         this.background = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY, this.cameras.main.width, this.cameras.main.height, 0x232323);
 
         HUDUtils.CreateHUD(this.game, this);
@@ -28,7 +30,7 @@ export default class InitialScene extends Phaser.Scene {
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 400,
             y: 300,
-            width: 320,
+            width: 360,
             height: 460,
 
             scrollMode: 0,
@@ -36,15 +38,16 @@ export default class InitialScene extends Phaser.Scene {
             background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, COLOR_PRIMARY),
 
             panel: {
-                child: createGrid(this),
+                child: createGrid(this, 3),
                 mask: {
                     padding: 1,
                 }
             },
 
             slider: {
-                track: this.rexUI.add.roundRectangle(0, 0, 20, 10, 10, COLOR_DARK),
-                thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 13, COLOR_LIGHT),
+                track: this.rexUI.add.roundRectangle(0, 0, 0, 0, 3, COLOR_DARK),
+                thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 3, COLOR_LIGHT),
+                hideUnscrollableSlider: true,
                 // position: 'left'
             },
 
@@ -53,21 +56,21 @@ export default class InitialScene extends Phaser.Scene {
                 speed: 0.1
             },
 
-            header: this.rexUI.add.label({
-                height: 30,
+            // header: this.rexUI.add.label({
+            //     height: 30,
 
-                orientation: 0,
-                background: this.rexUI.add.roundRectangle(0, 0, 20, 20, 0, COLOR_DARK),
-                text: this.add.text(0, 0, 'Header'),
-            }),
+            //     orientation: 0,
+            //     background: this.rexUI.add.roundRectangle(0, 0, 20, 20, 0, COLOR_DARK),
+            //     text: this.add.text(0, 0, 'Header'),
+            // }),
 
-            footer: this.rexUI.add.label({
-                height: 30,
+            // footer: this.rexUI.add.label({
+            //     height: 30,
 
-                orientation: 0,
-                background: this.rexUI.add.roundRectangle(0, 0, 20, 20, 0, COLOR_DARK),
-                text: this.add.text(0, 0, 'Footer'),
-            }),
+            //     orientation: 0,
+            //     background: this.rexUI.add.roundRectangle(0, 0, 20, 20, 0, COLOR_DARK),
+            //     text: this.add.text(0, 0, 'Footer'),
+            // }),
 
             space: {
                 left: 10,
@@ -79,30 +82,35 @@ export default class InitialScene extends Phaser.Scene {
                 header: 10,
                 footer: 10,
             }
-        }).layout()
+        }).layout();
 
-        function createGrid(scene: any) {
+        scrollablePanel
+            .setChildrenInteractive({})
+            .on('child.click', function (child: Label, pointer: any, event: any) {
+                PlayerUtils.AddClickingPower(1000000);
+                child.destroy();
+                scrollablePanel.layout();
+            });
+
+        function createGrid(scene: InitialScene, size: number) {
             // Create table body
             var sizer = scene.rexUI.add.fixWidthSizer({
                 space: {
-                    left: 3,
-                    right: 3,
-                    top: 3,
-                    bottom: 3,
-                    item: 8,
-                    line: 8,
+                    left: 1,
+                    right: 1,
+                    top: 1,
+                    bottom: 1,
+                    item: 1,
+                    line: 1,
                 },
-            })
-                .addBackground(scene.rexUI.add.roundRectangle(0, 0, 10, 10, 0, COLOR_DARK))
+            }).addBackground(scene.rexUI.add.roundRectangle(0, 0, 0, 0, 0, 0xff0000));
 
-            for (var i = 0; i < 30; i++) {
-                sizer.add(scene.rexUI.add.label({
+            for (var i = 0; i < size; i++) {
+                var label = scene.rexUI.add.label({
                     width: 60, height: 60,
 
-                    background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, COLOR_LIGHT),
-                    text: scene.add.text(0, 0, `${i}`, {
-                        fontSize: 18
-                    }),
+                    background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 5, COLOR_LIGHT),
+                    icon: scene.add.image(25, 35, 'icon_clover'),
 
                     align: 'center',
                     space: {
@@ -111,8 +119,12 @@ export default class InitialScene extends Phaser.Scene {
                         top: 10,
                         bottom: 10,
                     }
-                }));
+                });
+
+                sizer.add(label);
             }
+
+            // console.log(sizer);
 
             return sizer;
         }
@@ -130,7 +142,7 @@ export default class InitialScene extends Phaser.Scene {
 
 
         this.background.setInteractive().on('pointerup', () => {
-            PlayerUtils.AddCurrency(1);
+            PlayerUtils.AddCurrency(PlayerUtils.GetPlayerData().clickPower);
         });
     }
 }

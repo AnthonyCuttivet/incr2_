@@ -7,6 +7,7 @@ export class PlayerUtils {
 
     public static CreateOrLoadPlayerData() {
         this.playerData = new PlayerData();
+        PlayerUtils.UpdateClicking();
     }
 
     public static GetPlayerData(): PlayerData {
@@ -25,5 +26,18 @@ export class PlayerUtils {
         });
         PlayerUtils.GetPlayerData().cps = cps;
         HUDUtils.UpdatePlayerCPSHUD();
+    }
+
+    public static UpdateClicking() {
+        var clickPower = 1;
+        var playerData = PlayerUtils.GetPlayerData();
+        clickPower = (clickPower * playerData.globalClickingBonusPercent) + playerData.globalClickingBonusRaw;
+
+        PlayerUtils.GetPlayerData().clickPower = clickPower;
+    }
+
+    public static AddClickingPower(amount: number) {
+        PlayerUtils.GetPlayerData().globalClickingBonusRaw += amount;
+        PlayerUtils.UpdateClicking();
     }
 }
